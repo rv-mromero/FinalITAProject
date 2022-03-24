@@ -1,0 +1,55 @@
+version: "3.3"
+
+# Define services
+services:
+  # App backend service
+  api:
+    # Configuration for building the docker image for the backend service
+    container_name: API
+    build:
+      context: api # Either a path to a directory containing a Dockerfile, or a url to a git repository
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080" # Forward the exposed port 8000 on the container to port 8000 on the host machine
+    restart: always
+    depends_on:
+      - database # Starts mysql db first
+    networks:
+      - backend
+    env_file:
+      - .env
+
+  # frontend service
+  client:
+    container_name: client
+    build:
+      context: client
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    restart: always
+    depends_on:
+      - database
+      - api
+    networks:
+      - backend
+
+  # Database Service
+  database:
+    environment:
+      - MYSQL_ROOT_PASSWORD=password1234
+      - MYSQL_USERNAME=user1234
+      - MYSQL_PASSWORD=anotherpassword123
+    container_name: database
+    ports:
+      - "3310:3306"
+    restart: always
+    build:
+      context: database
+      dockerfile: Dockerfile
+    networks:
+      - backend
+
+# Networks to be created to facilitate communication between containers
+networks:
+  backend:
