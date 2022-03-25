@@ -39,7 +39,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=password1234
       - MYSQL_USERNAME=user1234
-      - MYSQL_PASSWORD=anotherpassword123
     container_name: database
     ports:
       - "3310:3306"

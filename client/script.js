@@ -86,7 +86,7 @@ function getProducts(param) {
 }
   
 
-// dynamic content loading for client
+// dynamic content loading for client product page
 function createProductHTML(response) {
 console.log(response);
 var responseData = response.data;
@@ -113,7 +113,7 @@ var output = "";
                 &lt;&lt; back
               </button>
             <h3 class="cloth-price">${responseData[i].price}</h3>
-            <button class="card-button" onclick(openModal())>See More Details</button>
+            <button class="card-button"onclick="document.location='../individualPage/individual_product.html'">See More Details</button>
           </div>
         </div>`;
   }
@@ -121,56 +121,25 @@ var output = "";
 return output;
 }
 
-function openModal(data){
-  return 
-  `<div id="product_layout_1">
-      <div class="top">
-      <div class="product_images">
-        <div class="product_image_1">
-          <img src="https://bit.ly/3mPPpc9"/>
-        </div>
-        <div class="product_image_small">
-          <div class="product_image_2">
-            <img src="https://bit.ly/3JvPr2F"/>
-          </div>
-                    <div class="product_image_3">
-            <img src="https://bit.ly/3eIHw40"/>
-          </div>
-                    <div class="product_image_4">
-            <img src="https://bit.ly/3FOckMm"/>
-          </div>
-        </div>
-        </div>
-        <div class="product_info">
-          <h1>
-            Stars Do Shine Sequin Dress - Silver</h1>
-          <div class="price">
-          <h2 class="original_price">$44.99</h2>
-          <h2 class="sale_price">$40</h2>
-          </div>
-          <div class="rating">
-            <i class="fa fa-star fa-3x"></i><i class="fa fa-star fa-3x"></i><i class="fa fa-star fa-3x"></i><i class="fa fa-star-half-o fa-3x"></i><i class="fa fa-star-o fa-3x"></i>
-          </div>
-          <div class="product_description">
-          <p>Available In Silver
-            Sequin Midi Dress
-            Spaghetti Strap
-            V Neck
-            Front Slit
-            Lined
-            Back Zipper
-            Stretch
-            Disclaimer: Runs Small, Shop One Size Up
-            Self: 60% PET 40% Polyester
-            Lining: 95% Polyester 5% Spandex
-            Imported</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-          </div>
-         <div class="related_info">
-           <span class="sku">SKU:1234567</span><span class="quantity">QTY:7</span>
-         </div>`
+
+
+function getHomeProduct() {
+  axios
+    .get("http://localhost:8080/products")
+
+    .then(response => {
+      document.querySelectorAll(".cards-wrapper")[0].innerHTML = homePageProduct(response);
+      console.log(response);
+Array.from(document.querySelectorAll(".navigation-button")).forEach(item => {
+  item.onclick = () => {
+    console.log('hello')
+    item.parentElement.parentElement.classList.toggle("change");
+  };
+});
+    });
 }
 
+// display 1-4 as feture products on home page
 function homePageProduct(response) {
   console.log(response);
   var responseData = response.data;
@@ -197,7 +166,7 @@ function homePageProduct(response) {
                   &lt;&lt; back
                 </button>
               <h3 class="cloth-price">${responseData[i].price}</h3>
-              <button class="card-button" onclick="document.location='../individualPage/individual_product.html'">See More Details</button>
+              <button class="card-button"onclick="document.location='../individualPage/individual_product.html'">See More</button>
             </div>
           </div>`;
     }
@@ -221,3 +190,49 @@ function homePageProduct(response) {
         });
   }
 
+  // function createIndividualProduct(data){
+  // console.log(response);
+  // var responseData = response.data;
+  // var output = "";
+  //   output +=
+  
+  //   for (i = 0; i < responseData.length; i++) {
+  //     output += 
+  //   `<div id="product_layout_1">
+  //       <div class="top">
+  //       <div class="product_images">
+  //         <div class="product_image_1">
+  //           <img src="${responseData[i].img_main}"/>
+  //         </div>
+  //         <div class="product_image_small">
+  //           <div class="product_image_2">
+  //             <img src="${responseData[i].img_main}"/>
+  //           </div>
+  //                     <div class="product_image_3">
+  //             <img src="${responseData[i].img_main}"/>
+  //           </div>
+  //                     <div class="product_image_4">
+  //             <img src="${responseData[i].img_main}"/>
+  //           </div>
+  //         </div>
+  //         </div>
+  //         <div class="product_info">
+  //           <h1>
+  //           ${responseData[i].name}</h1>
+  //           <div class="price">
+  //           <h2 class="original_price">${responseData[i].price}</h2>
+  //           <h2 class="sale_price">$40</h2>
+  //           </div>
+  //           <div class="rating">
+  //             <i class="fa fa-star fa-3x"></i><i class="fa fa-star fa-3x"></i><i class="fa fa-star fa-3x"></i><i class="fa fa-star-half-o fa-3x"></i><i class="fa fa-star-o fa-3x"></i>
+  //           </div>
+  //           <div class="product_description">
+  //           <p>${responseData[i].description}</p>
+  //           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+  //           </div>
+  //          <div class="related_info">
+  //            <span class="sku">SKU:1234567</span><span class="quantity">QTY:7</span>
+  //          </div>`
+  //   }
+  // return output;
+  // }

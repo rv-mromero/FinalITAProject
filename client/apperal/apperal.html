@@ -82,79 +82,53 @@
       <h4>Styles</h4> 
       <div class="styles-filters filter-group">
       <div>
-          <input type="checkbox" class="filter-styles">
-          <label for="filter-styles"> Night Swag</label>
+          <input type="radio" class="filter-styles" id="night-swag" name="category" onclick="filterApperal('night swag')">
+          <label for="night-swag" > Night Swag</label>
         </div>
         
         <div>
-          <input type="checkbox" class="filter-styles">
-          <label for="filter-styles">Runways Swag</label>
+          <input type="radio" class="filter-styles" id="runway-swag" name="category" onclick="filterApperal('runway swag')">
+          <label for="runway-swag">Runway Swag</label>
         </div>
         
         <div>
-          <input type="checkbox" class="filter-styles" checked>
-          <label for="filter-styles">Comfort Swag</label>
+          <input type="radio" class="filter-styles" id="comfort-swag" name="category" onclick="filterApperal('comfort swag')">
+          <label for="comfort-swag">Comfort Swag</label>
         </div>
         
         <div>
-          <input type="checkbox" class="filter-styles">
-          <label for="filter-styles">Casual Swag</label>
+          <input type="radio" class="filter-styles" id="casual-swag" name="category" onclick="filterApperal('casual swag')">
+          <label for="casual-swag">Casual Swag</label>
         </div>
       </div>
 
       <h4>Sizes</h4> 
       <div class="size-filters filter-group">
       <div>
-          <input type="checkbox" id="filter-size-xSmall">
+          <input type="radio" id="filter-size-xSmall" name="sizes" onclick="filterApperal('XS')>
           <label for="filter-size-small"> X-Small</label>
         </div>
         
         <div>
-          <input type="checkbox" id="filter-size-small">
+          <input type="radio" id="filter-size-small" name="sizes" onclick="filterApperal('S')>
           <label for="filter-size-small">Small</label>
         </div>
         
         <div>
-          <input type="checkbox" id="filter-size-medium" checked>
+          <input type="radio" id="filter-size-medium" name="sizes" onclick="filterApperal('M')>
           <label for="filter-size-medium">Medium</label>
         </div>
         
         <div>
-          <input type="checkbox" id="filter-size-large">
+          <input type="radio" id="filter-size-large" name="sizes" onclick="filterApperal('L')>
           <label for="filter-size-large">Large</label>
         </div>
         
          <div>
-          <input type="checkbox" id="filter-size-xLarge">
+          <input type="radio" id="filter-size-xLarge" name="sizes" onclick="filterApperal('XL')>
           <label for="filter-size-small">X-Large</label>
         </div>
       </div>
-
-
-      <h4>Prices</h4>
-        <div class="content-filters filter-group"> 
-          <div>
-            <input type="checkbox" class="filter-content-price" name="filter-content">
-            <label for="filter-content-price">$0.00 - $20.00</label>
-          </div>
-          
-          <div>
-            <input type="checkbox" class="filter-content-price" name="filter-content">
-            <label for="filter-content-price">$21.99 - $40.00</label>
-          </div>
-          
-          <div>
-            <input type="checkbox" class="filter-content-price" name="filter-content">
-            <label for="filter-content-price">$41.99 - $60.00</label>
-          </div>
-  
-          <div>
-            <input type="checkbox" class="filter-content-price" name="filter-content">
-            <label for="filter-content-price">$61.99 - $80.00</label>
-          </div>
-          
-      </div> 
-    </section>
 
 <!--filter ends-->
 
